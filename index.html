@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maxence Michel — Journaliste sportif</title>
+  <meta name="description" content="Portfolio de Maxence Michel, journaliste sportif en alternance. Articles, reportages et productions sur le basketball, le football et le sport en général." />
+  <meta property="og:title" content="Maxence Michel — Journaliste sportif" />
+  <meta property="og:description" content="Portfolio journalistique — basket, football, multisport." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f8f5;
+      --bg-card: #ffffff;
+      --bg-secondary: #f3f2ee;
+      --text-primary: #1a1a18;
+      --text-secondary: #5a5955;
+      --text-tertiary: #9a9893;
+      --border: rgba(0,0,0,0.1);
+      --border-hover: rgba(0,0,0,0.2);
+      --accent-basket-bg: #E6F1FB;
+      --accent-basket-text: #185FA5;
+      --accent-basket-border: #B5D4F4;
+      --accent-foot-bg: #EAF3DE;
+      --accent-foot-text: #3B6D11;
+      --accent-foot-border: #C0DD97;
+      --accent-multi-bg: #FAEEDA;
+      --accent-multi-text: #854F0B;
+      --accent-multi-border: #FAC775;
+      --accent-handi-bg: #FAECE7;
+      --accent-handi-text: #993C1D;
+      --accent-handi-border: #F5C4B3;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141412;
+        --bg-card: #1e1e1b;
+        --bg-secondary: #252521;
+        --text-primary: #f0ede6;
+        --text-secondary: #a09d96;
+        --text-tertiary: #6a6762;
+        --border: rgba(255,255,255,0.1);
+        --border-hover: rgba(255,255,255,0.2);
+        --accent-basket-bg: #0C2E4A;
+        --accent-basket-text: #85B7EB;
+        --accent-basket-border: #185FA5;
+        --accent-foot-bg: #1A2E0A;
+        --accent-foot-text: #97C459;
+        --accent-foot-border: #3B6D11;
+        --accent-multi-bg: #2E1F00;
+        --accent-multi-text: #EF9F27;
+        --accent-multi-border: #854F0B;
+        --accent-handi-bg: #2E1008;
+        --accent-handi-text: #F0997B;
+        --accent-handi-border: #993C1D;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 0 3.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 420px;
+      line-height: 1.65;
+    }
+
+    .hero-meta {
+      text-align: right;
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 2.2;
+      white-space: nowrap;
+    }
+
+    .hero-meta a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .hero-meta a:hover { color: var(--text-primary); }
+
+    /* SECTIONS */
+    .section {
+      padding: 3rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--text-primary);
+    }
+
+    .section-count {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* FILTERS */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1.75rem;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 0.5px solid var(--border-hover);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+      background: transparent;
+      font-family: inherit;
+    }
+
+    .tag:hover, .tag.active {
+      background: var(--text-primary);
+      color: var(--bg);
+      border-color: var(--text-primary);
+    }
+
+    /* GRID */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .article-card {
+      background: var(--bg-card);
+      padding: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-height: 170px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+
+    .article-card:hover { background: var(--bg-secondary); }
+    .article-card.hidden { display: none; }
+
+    .card-source {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text-primary);
+      flex: 1;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      line-height: 1.45;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .card-type {
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 100px;
+      border: 0.5px solid;
+    }
+
+    .card-type.basket { background: var(--accent-basket-bg); color: var(--accent-basket-text); border-color: var(--accent-basket-border); }
+    .card-type.foot   { background: var(--accent-foot-bg);   color: var(--accent-foot-text);   border-color: var(--accent-foot-border); }
+    .card-type.multi  { background: var(--accent-multi-bg);  color: var(--accent-multi-text);  border-color: var(--accent-multi-border); }
+    .card-type.handi  { background: var(--accent-handi-bg);  color: var(--accent-handi-text);  border-color: var(--accent-handi-border); }
+
+    .card-arrow {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      transition: transform 0.15s;
+    }
+
+    .article-card:hover .card-arrow { transform: translate(2px, -2px); }
+
+    /* EMPTY STATE */
+    .empty-state {
+      grid-column: 1 / -1;
+      background: var(--bg-card);
+      padding: 3rem;
+      text-align: center;
+      color: var(--text-tertiary);
+      font-size: 14px;
+    }
+
+    /* ADD BUTTON */
+    .add-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 1rem;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text-secondary);
+      border: 0.5px solid var(--border-hover);
+      background: transparent;
+      padding: 7px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .add-btn:hover {
+      background: var(--text-primary);
+      color: var(--bg);
+      border-color: var(--text-primary);
+    }
+
+    /* EXPERIENCES */
+    .exp-list { display: flex; flex-direction: column; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 0.5px solid var(--border);
+      align-items: start;
+    }
+
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-date {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      padding-top: 2px;
+      line-height: 1.5;
+    }
+
+    .exp-org {
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    /* CONTACT */
+    .contact-bar {
+      padding: 2.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .contact-cta {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text-primary);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .contact-link:hover { color: var(--text-primary); }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 0.5px solid var(--border);
+      padding: 2rem;
+      width: 100%;
+      max-width: 460px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+
+    .modal input,
+    .modal textarea,
+    .modal select {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 13px;
+      border-radius: 8px;
+      border: 0.5px solid var(--border-hover);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .modal input:focus,
+    .modal textarea:focus,
+    .modal select:focus {
+      border-color: var(--text-secondary);
+    }
+
+    .modal textarea { min-height: 70px; resize: vertical; }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 0.25rem;
+    }
+
+    .btn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      border: 0.5px solid var(--border-hover);
+      background: transparent;
+      color: var(--text-primary);
+      transition: all 0.15s;
+    }
+
+    .btn:hover { background: var(--bg-secondary); }
+
+    .btn-primary {
+      background: var(--text-primary);
+      color: var(--bg);
+      border-color: var(--text-primary);
+    }
+
+    .btn-primary:hover { opacity: 0.8; }
+
+    @media (max-width: 600px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-meta { text-align: left; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .contact-bar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="hero-label">Portfolio journalistique</p>
+        <h1 class="hero-name">Maxence<br>Michel</h1>
+        <p class="hero-sub">Journaliste sportif en alternance — basket, football, multisport. Master Information-Communication, Assas / IFP.</p>
+      </div>
+      <div class="hero-meta">
+        <div>Issy-les-Moulineaux</div>
+        <div><a href="mailto:maxencemichel@proton.me">maxencemichel@proton.me</a></div>
+        <div><a href="tel:+33627081656">+33 6 27 08 16 56</a></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Articles & productions</h2>
+      <span class="section-count" id="article-count"></span>
+    </div>
+
+    <div class="tag-row">
+      <button class="tag active" onclick="filterArticles('all', this)">Tous</button>
+      <button class="tag" onclick="filterArticles('basket', this)">Basketball</button>
+      <button class="tag" onclick="filterArticles('foot', this)">Football</button>
+      <button class="tag" onclick="filterArticles('multi', this)">Multisport</button>
+      <button class="tag" onclick="filterArticles('handi', this)">Handisport</button>
+    </div>
+
+    <div class="articles-grid" id="articles-grid"></div>
+
+    <button class="add-btn" onclick="openModal()">+ Ajouter un article</button>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Expériences</h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <span class="exp-date">2025 – aujourd'hui</span>
+        <div>
+          <p class="exp-org">Le Roster</p>
+          <p class="exp-role">Journaliste sportif — couverture Betclic Élite, analyses tactiques, conférences de presse, scripts réseaux sociaux</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <span class="exp-date">2024 – aujourd'hui</span>
+        <div>
+          <p class="exp-org">EMN</p>
+          <p class="exp-role">Journaliste indépendant — football, basketball, athlétisme. Gestion du site web, codage basique</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <span class="exp-date">Été 2024</span>
+        <div>
+          <p class="exp-org">Olympic Broadcasting Service</p>
+          <p class="exp-role">Technicien son — JO et JOP Paris 2024, gestion technique des commentateurs TV internationaux</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <span class="exp-date">2019 – 2020</span>
+        <div>
+          <p class="exp-org">Europe 1 / Ouest France</p>
+          <p class="exp-role">Stagiaire journaliste — radio et presse écrite, élections municipales</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="contact-bar">
+    <p class="contact-cta">Disponible en alternance — septembre 2026</p>
+    <div class="contact-links">
+      <a href="mailto:maxencemichel@proton.me" class="contact-link">maxencemichel@proton.me</a>
+      <a href="tel:+33627081656" class="contact-link">06 27 08 16 56</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <p class="modal-title">Ajouter un article</p>
+    <input type="text" id="input-title" placeholder="Titre de l'article *" />
+    <input type="url" id="input-url" placeholder="Lien URL" />
+    <input type="text" id="input-source" placeholder="Source (Le Roster, EMN...)" />
+    <select id="input-type">
+      <option value="basket">Basketball</option>
+      <option value="foot">Football</option>
+      <option value="multi">Multisport</option>
+      <option value="handi">Handisport</option>
+    </select>
+    <textarea id="input-desc" placeholder="Courte description (optionnel)"></textarea>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Annuler</button>
+      <button class="btn btn-primary" onclick="addArticle()">Ajouter</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'portfolio_articles_v1';
+  let articles = [];
+  let currentFilter = 'all';
+
+  function loadArticles() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) articles = JSON.parse(saved);
+    } catch(e) { articles = []; }
+  }
+
+  function saveArticles() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(articles)); } catch(e) {}
+  }
+
+  function typeLabel(t) {
+    return { basket: 'Basketball', foot: 'Football', multi: 'Multisport', handi: 'Handisport' }[t] || t;
+  }
+
+  function updateCount() {
+    const visible = currentFilter === 'all'
+      ? articles.length
+      : articles.filter(a => a.type === currentFilter).length;
+    const el = document.getElementById('article-count');
+    el.textContent = visible > 0 ? visible + ' article' + (visible > 1 ? 's' : '') : '';
+  }
+
+  function renderArticles() {
+    const grid = document.getElementById('articles-grid');
+    grid.innerHTML = '';
+
+    const filtered = currentFilter === 'all' ? articles : articles.filter(a => a.type === currentFilter);
+
+    if (filtered.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.textContent = 'Aucun article encore — clique sur "Ajouter un article" ci-dessous.';
+      grid.appendChild(empty);
+    } else {
+      filtered.forEach((a) => {
+        const el = document.createElement('a');
+        el.className = 'article-card';
+        el.href = a.url || '#';
+        if (a.url) el.target = '_blank';
+        el.rel = 'noopener noreferrer';
+        el.innerHTML = `
+          <span class="card-source">${a.source || ''}</span>
+          <p class="card-title">${a.title}</p>
+          ${a.desc ? `<p class="card-desc">${a.desc}</p>` : ''}
+          <div class="card-footer">
+            <span class="card-type ${a.type}">${typeLabel(a.type)}</span>
+            ${a.url ? `<span class="card-arrow">↗</span>` : ''}
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    updateCount();
+  }
+
+  function filterArticles(filter, btn) {
+    currentFilter = filter;
+    document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    renderArticles();
+  }
+
+  function openModal() {
+    document.getElementById('modal-overlay').classList.add('open');
+    document.getElementById('input-title').focus();
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+  }
+
+  function addArticle() {
+    const title = document.getElementById('input-title').value.trim();
+    if (!title) { document.getElementById('input-title').focus(); return; }
+
+    articles.unshift({
+      title,
+      url: document.getElementById('input-url').value.trim(),
+      source: document.getElementById('input-source').value.trim() || 'Portfolio',
+      type: document.getElementById('input-type').value,
+      desc: document.getElementById('input-desc').value.trim()
+    });
+
+    saveArticles();
+    renderArticles();
+    closeModal();
+    ['input-title','input-url','input-source','input-desc'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('input-type').value = 'basket';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  loadArticles();
+  renderArticles();
+</script>
+</body>
+</html>

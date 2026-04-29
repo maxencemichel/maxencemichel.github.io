@@ -29,12 +29,9 @@
       --accent-foot-bg: #EAF3DE;
       --accent-foot-text: #3B6D11;
       --accent-foot-border: #C0DD97;
-      --accent-multi-bg: #FAEEDA;
-      --accent-multi-text: #854F0B;
-      --accent-multi-border: #FAC775;
-      --accent-handi-bg: #FAECE7;
-      --accent-handi-text: #993C1D;
-      --accent-handi-border: #F5C4B3;
+      --accent-athle-bg: #FAEEDA;
+      --accent-athle-text: #854F0B;
+      --accent-athle-border: #FAC775;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -53,12 +50,9 @@
         --accent-foot-bg: #1A2E0A;
         --accent-foot-text: #97C459;
         --accent-foot-border: #3B6D11;
-        --accent-multi-bg: #2E1F00;
-        --accent-multi-text: #EF9F27;
-        --accent-multi-border: #854F0B;
-        --accent-handi-bg: #2E1008;
-        --accent-handi-text: #F0997B;
-        --accent-handi-border: #993C1D;
+        --accent-athle-bg: #2E1F00;
+        --accent-athle-text: #EF9F27;
+        --accent-athle-border: #854F0B;
       }
     }
 
@@ -252,8 +246,7 @@
 
     .card-type.basket { background: var(--accent-basket-bg); color: var(--accent-basket-text); border-color: var(--accent-basket-border); }
     .card-type.foot   { background: var(--accent-foot-bg);   color: var(--accent-foot-text);   border-color: var(--accent-foot-border); }
-    .card-type.multi  { background: var(--accent-multi-bg);  color: var(--accent-multi-text);  border-color: var(--accent-multi-border); }
-    .card-type.handi  { background: var(--accent-handi-bg);  color: var(--accent-handi-text);  border-color: var(--accent-handi-border); }
+    .card-type.athle  { background: var(--accent-athle-bg);  color: var(--accent-athle-text);  border-color: var(--accent-athle-border); }
 
     .card-arrow {
       font-size: 14px;
@@ -485,8 +478,7 @@
       <button class="tag active" onclick="filterArticles('all', this)">Tous</button>
       <button class="tag" onclick="filterArticles('basket', this)">Basketball</button>
       <button class="tag" onclick="filterArticles('foot', this)">Football</button>
-      <button class="tag" onclick="filterArticles('multi', this)">Multisport</button>
-      <button class="tag" onclick="filterArticles('handi', this)">Handisport</button>
+      <button class="tag" onclick="filterArticles('athle', this)">Athlétisme</button>
     </div>
 
     <div class="articles-grid" id="articles-grid"></div>
@@ -550,8 +542,7 @@
     <select id="input-type">
       <option value="basket">Basketball</option>
       <option value="foot">Football</option>
-      <option value="multi">Multisport</option>
-      <option value="handi">Handisport</option>
+      <option value="athle">Athlétisme</option>
     </select>
     <textarea id="input-desc" placeholder="Courte description (optionnel)"></textarea>
     <div class="modal-actions">
@@ -569,8 +560,12 @@
   function loadArticles() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) articles = JSON.parse(saved);
-    } catch(e) { articles = []; }
+      if (saved) {
+        articles = JSON.parse(saved);
+      } else {
+        articles = [...PRESET_ARTICLES];
+      }
+    } catch(e) { articles = [...PRESET_ARTICLES]; }
   }
 
   function saveArticles() {
@@ -578,8 +573,53 @@
   }
 
   function typeLabel(t) {
-    return { basket: 'Basketball', foot: 'Football', multi: 'Multisport', handi: 'Handisport' }[t] || t;
+    return { basket: 'Basketball', foot: 'Football', athle: 'Athlétisme' }[t] || t;
   }
+
+  const PRESET_ARTICLES = [
+    {
+      title: "Quand le Nigeria a renversé la Team USA",
+      url: "https://leroster.com/quand-le-nigeria-a-renverse-la-team-usa/",
+      source: "Le Roster",
+      type: "basket",
+      desc: ""
+    },
+    {
+      title: "LNB 25/26 : Le MSB sort les crocs",
+      url: "https://leroster.com/preview-lnb-2025-2026-msb/",
+      source: "Le Roster",
+      type: "basket",
+      desc: ""
+    },
+    {
+      title: "Nanterre 92 : un début sur les chapeaux de roue",
+      url: "https://leroster.com/nanterre-92-un-debut-sur-les-chapeaux-de-roue/",
+      source: "Le Roster",
+      type: "basket",
+      desc: ""
+    },
+    {
+      title: "Michael Carrick, le sauveur de Manchester United",
+      url: "https://mxnemcl.wordpress.com/2026/01/26/michael-carrick-le-sauveur-de-manchester-united/",
+      source: "EMN",
+      type: "foot",
+      desc: ""
+    },
+    {
+      title: "Scottish Premiership : Fergie is back ?",
+      url: "https://mxnemcl.wordpress.com/2025/11/01/scottish-premiership-fergie-is-back/",
+      source: "EMN",
+      type: "foot",
+      desc: ""
+    },
+    {
+      title: "Le Botswana, nouvelle place forte du sprint ?",
+      url: "https://mxnemcl.wordpress.com/2025/09/17/le-botswana-nouvelle-place-forte-du-sprint/",
+      source: "EMN",
+      type: "athle",
+      desc: ""
+    }
+  ];
 
   function updateCount() {
     const visible = currentFilter === 'all'
@@ -659,8 +699,7 @@
     renderArticles();
     closeModal();
     ['input-title','input-url','input-source','input-desc'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('input-type').value = 'basket';
-  }
+    document.getElementById('input-type').value = 'basket';  }
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
